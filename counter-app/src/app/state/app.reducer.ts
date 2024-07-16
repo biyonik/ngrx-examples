@@ -1,14 +1,14 @@
 import { createReducer, on } from "@ngrx/store";
-import { AppState } from "./app.state";
+import { CounterState } from "./app.state";
 import { actionDecreaseCounter, actionIncreaseCounter } from "./app.actions";
 
-const initialState: AppState = {Counter: 0}
+const initialState: CounterState = {Counter: 0}
 
-export const counterReducer = createReducer<AppState>(initialState, 
-    on(actionIncreaseCounter, (state): AppState => {
+export const counterReducer = createReducer<CounterState>(initialState, 
+    on(actionIncreaseCounter, (state): CounterState => {
         return {...state, Counter: state.Counter + 1}
     }),
-    on(actionDecreaseCounter, (state): AppState => {
+    on(actionDecreaseCounter, (state): CounterState => {
         return {...state, Counter: state.Counter - 1}
     })
 )
