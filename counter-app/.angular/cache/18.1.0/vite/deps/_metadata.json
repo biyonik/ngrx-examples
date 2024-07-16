@@ -1,0 +1,49 @@
+{
+  "hash": "f89aaaf5",
+  "configHash": "3f6ed354",
+  "lockfileHash": "3008b33c",
+  "browserHash": "77c95701",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "16bc9d62",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "e01d6915",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "612e065d",
+      "needsInterop": false
+    },
+    "@ngrx/store": {
+      "src": "../../../../../node_modules/@ngrx/store/fesm2022/ngrx-store.mjs",
+      "file": "@ngrx_store.js",
+      "fileHash": "e0260a26",
+      "needsInterop": false
+    },
+    "@ngrx/effects": {
+      "src": "../../../../../node_modules/@ngrx/effects/fesm2022/ngrx-effects.mjs",
+      "file": "@ngrx_effects.js",
+      "fileHash": "e147890f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-F2IOFGCL": {
+      "file": "chunk-F2IOFGCL.js"
+    },
+    "chunk-S5C4I4B5": {
+      "file": "chunk-S5C4I4B5.js"
+    },
+    "chunk-TIBAUJXO": {
+      "file": "chunk-TIBAUJXO.js"
+    }
+  }
+}
