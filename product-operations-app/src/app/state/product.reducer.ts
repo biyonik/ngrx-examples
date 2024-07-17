@@ -8,7 +8,18 @@ import {
 } from './product.actions';
 
 const initialState: ProductState = {
-  productList: [],
+  productList: [
+    {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      price: 200,
+    },
+  ],
   currency: 'USD',
 };
 
