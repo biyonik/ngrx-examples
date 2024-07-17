@@ -1,0 +1,22 @@
+<h1>NgRx Product Operations App</h1>
+
+<div class="container">
+  <div class="row">
+    <ul>
+      <li>
+        <a [routerLink]="['/product/a']" routerLinkActive="router-link-active"
+          >Product-A</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/product/b']" routerLinkActive="router-link-active"
+          >Product-B</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
