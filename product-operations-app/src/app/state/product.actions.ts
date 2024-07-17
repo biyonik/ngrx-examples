@@ -9,7 +9,7 @@ import { ProductModel } from '../models';
 import { Currency } from '../models/curreny.model';
 
 interface ProductProps {
-  ProductForAdd: ProductModel;
+  Product: ProductModel;
 }
 
 interface ProductRemoveProps {
@@ -22,20 +22,20 @@ interface ProductUpdateCurrencyProps {
 
 export const productAddAction = createAction(
   productAddActionTypeName,
-  props<ProductProps>
+  props<ProductProps>()
 );
 
 export const productUpdateAction = createAction(
   productUpdateActionTypeName,
-  props<ProductProps>
+  props<ProductProps>()
 );
 
 export const productRemoveAction = createAction(
   productRemoveActionTypeName,
-  props<ProductRemoveProps>
+  props<ProductRemoveProps>()
 );
 
-export const productUpdateCurrency = createAction(
+export const productUpdateCurrencyAction = createAction(
   productUpdateCurrencyActionTypeName,
-  props<ProductUpdateCurrencyProps>
+  props<ProductUpdateCurrencyProps>()
 );

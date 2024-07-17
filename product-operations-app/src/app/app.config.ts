@@ -4,7 +4,14 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { productReducer } from './state/product.reducer';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideStore(), provideEffects()]
+  providers: [
+    provideRouter(routes),
+    provideStore({
+      productStoreSlice: productReducer,
+    }),
+    provideEffects(),
+  ],
 };
