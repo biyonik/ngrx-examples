@@ -2,25 +2,17 @@ import { createReducer, on } from '@ngrx/store';
 import { ProductState } from './product.state';
 import {
   productAddAction,
+  productLoadOnFailedAction,
+  productLoadOnSuccessAction,
   productRemoveAction,
   productUpdateAction,
   productUpdateCurrencyAction,
 } from './product.actions';
 
 const initialState: ProductState = {
-  productList: [
-    {
-      id: 1,
-      name: 'Product 1',
-      price: 100,
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      price: 200,
-    },
-  ],
+  productList: [],
   currency: 'USD',
+  error: undefined,
 };
 
 const productAddReducerItem = on(
@@ -67,10 +59,32 @@ const currencyUpdateReducerItem = on(
   }
 );
 
+const productLoadOnSuccessReducerItem = on(
+  productLoadOnSuccessAction,
+  (state: ProductState, action): ProductState => {
+    return {
+      ...state,
+      productList: action.products,
+    };
+  }
+);
+
+const productLoadOnFailedReducerItem = on(
+  productLoadOnFailedAction,
+  (state: ProductState, action): ProductState => {
+    return {
+      ...state,
+      error: action.error,
+    };
+  }
+);
+
 export const productReducer = createReducer<ProductState>(
   initialState,
   productAddReducerItem,
   productRemoveReducerItem,
   productUpdateReducerItem,
-  currencyUpdateReducerItem
+  currencyUpdateReducerItem,
+  productLoadOnSuccessReducerItem,
+  productLoadOnFailedReducerItem
 );

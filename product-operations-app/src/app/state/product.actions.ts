@@ -1,6 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import {
   productAddActionTypeName,
+  productLoadActionTypeName,
+  productLoadOnFailedActionTypeName,
+  productLoadOnSuccessActionTypeName,
   productRemoveActionTypeName,
   productUpdateActionTypeName,
   productUpdateCurrencyActionTypeName,
@@ -10,6 +13,10 @@ import { Currency } from '../models/curreny.model';
 
 interface ProductProps {
   Product: ProductModel;
+}
+
+interface ProductListProps {
+  products: ProductModel[];
 }
 
 interface ProductRemoveProps {
@@ -38,4 +45,15 @@ export const productRemoveAction = createAction(
 export const productUpdateCurrencyAction = createAction(
   productUpdateCurrencyActionTypeName,
   props<ProductUpdateCurrencyProps>()
+);
+
+export const productLoadAction = createAction(productLoadActionTypeName);
+export const productLoadOnSuccessAction = createAction(
+  productLoadOnSuccessActionTypeName,
+  props<ProductListProps>()
+);
+
+export const productLoadOnFailedAction = createAction(
+  productLoadOnFailedActionTypeName,
+  props<{ error: any }>()
 );

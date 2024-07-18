@@ -18,3 +18,8 @@ export const getProductById = (id: number | string) =>
   createSelector(getProductState, (state: ProductState) => {
     return state.productList.find((p) => p.id === id);
   });
+
+export const getError = createSelector(
+  getProductState,
+  (state: ProductState) => state.error
+);

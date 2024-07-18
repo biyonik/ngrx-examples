@@ -11,9 +11,14 @@ import {
 import { ProductState } from '../state/product.state';
 import { Store } from '@ngrx/store';
 import { ProductModel } from '../models';
-import { getProductById, getProducts } from '../state/product.selector';
+import {
+  getError,
+  getProductById,
+  getProducts,
+} from '../state/product.selector';
 import {
   productAddAction,
+  productLoadAction,
   productRemoveAction,
   productUpdateAction,
 } from '../state/product.actions';
@@ -196,6 +201,14 @@ export default class ProductAComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.store.select(getError).subscribe((x) => {
+      if (x !== undefined) {
+        alert('Products not loaded from API resource!');
+      }
+    });
+
+    this.store.dispatch(productLoadAction());
+
     this.store.select(getProducts).subscribe((productList) => {
       this.productList.set(productList);
     });

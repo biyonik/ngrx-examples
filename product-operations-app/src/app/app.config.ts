@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { productReducer } from './state/product.reducer';
+import { provideHttpClient } from '@angular/common/http';
+import ProductEffect from './state/product.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       productStoreSlice: productReducer,
     }),
-    provideEffects(),
+    provideEffects(ProductEffect),
+    provideHttpClient(),
   ],
 };

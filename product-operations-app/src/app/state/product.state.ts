@@ -6,4 +6,5 @@ export interface AppState {}
 export interface ProductState extends AppState {
   productList: ProductModel[];
   currency: Currency;
+  error: any | undefined;
 }
