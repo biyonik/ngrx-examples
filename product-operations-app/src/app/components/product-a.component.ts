@@ -1,9 +1,10 @@
-import { Component, computed, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { ProductState } from '../state/product.state';
 import { Store } from '@ngrx/store';
 import { ProductModel } from '../models';
 import { getProducts } from '../state/product.selector';
 import { productAddAction } from '../state/product.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -135,9 +136,11 @@ import { productAddAction } from '../state/product.actions';
     }
   `],
 })
-export default class ProductAComponent implements OnInit {
+export default class ProductAComponent implements OnInit, OnDestroy {
   private readonly store: Store<ProductState> = inject(Store<ProductState>);
   protected readonly productList: WritableSignal<ProductModel[]> = signal<ProductModel[]>([]);
+  private subscription: Subscription | null = null;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -151,6 +154,12 @@ export default class ProductAComponent implements OnInit {
   addProduct() {
     const price = Math.floor(Math.random() * 100) + 1;
     this.store.dispatch(productAddAction({ Product: { id: this.lastId(), name: 'Product ' + this.lastId(), price: price } }));
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
